@@ -13,6 +13,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Insets;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class DefaultView extends JFrame {
 
@@ -21,6 +23,8 @@ public class DefaultView extends JFrame {
 	 */
 	private static final long serialVersionUID = 8369060012434391403L;
 	private JPanel contentPane;
+	private CardLayout cl;
+	private JTextField tf_codigo;
 
 	/**
 	 * Launch the application.
@@ -47,7 +51,7 @@ public class DefaultView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(0,77,113));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -56,7 +60,7 @@ public class DefaultView extends JFrame {
 		panelHeader.setBackground(new Color(0,77,113));
 		contentPane.add(panelHeader, BorderLayout.NORTH);
 		GridBagLayout gbl_panelHeader = new GridBagLayout();
-		gbl_panelHeader.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panelHeader.columnWidths = new int[] {0, 0, 0, 0};
 		gbl_panelHeader.rowHeights = new int[]{0, 0, 0};
 		gbl_panelHeader.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panelHeader.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
@@ -84,8 +88,60 @@ public class DefaultView extends JFrame {
 		
 		JPanel panelCardlayout = new JPanel();
 		panelCardlayout.setBackground(Color.WHITE);
+		cl = new CardLayout(0, 0);
+		panelCardlayout.setLayout(cl);
 		contentPane.add(panelCardlayout, BorderLayout.CENTER);
-		panelCardlayout.setLayout(new CardLayout(0, 0));
+		
+		JPanel panelLer = new JPanel();
+		panelLer.setBackground(Color.WHITE);
+		contentPane.add(panelLer, BorderLayout.SOUTH);
+		GridBagLayout gbl_panelLer = new GridBagLayout();
+		gbl_panelLer.columnWidths = new int[]{0, 0};
+		gbl_panelLer.rowHeights = new int[]{0, 0, 0};
+		gbl_panelLer.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panelLer.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panelLer.setLayout(gbl_panelLer);
+		
+		JLabel lblNewLabel = new JLabel("Por favor, passe o código de barras no leitor:");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 30));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		panelLer.add(lblNewLabel, gbc_lblNewLabel);
+		
+		tf_codigo = new JTextField();
+		tf_codigo.setHorizontalAlignment(SwingConstants.CENTER);
+		tf_codigo.setFont(new Font("Dialog", Font.PLAIN, 30));
+		GridBagConstraints gbc_tf_codigo = new GridBagConstraints();
+		gbc_tf_codigo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tf_codigo.gridx = 0;
+		gbc_tf_codigo.gridy = 1;
+		panelLer.add(tf_codigo, gbc_tf_codigo);
+		tf_codigo.setColumns(10);
+		
+		final JPanel panel_successTicket = new PanelSuccessTicket();
+		panelCardlayout.add(panel_successTicket, "successTicket");
+		
+		final JPanel panel_successEmployee = new PanelSuccessEmployee();
+		panelCardlayout.add(panel_successEmployee, "successEmployee");
+		
+		final JPanel panel_successEmployeeBirth = new PanelSuccessEmployeeBirth();
+		panelCardlayout.add(panel_successEmployeeBirth, "successEmployeeBirth");
+		
+		final JPanel panel_error = new PanelError();
+		panelCardlayout.add(panel_error, "error");
+		
+		final JPanel panel_alert = new PanelWarning();
+		panelCardlayout.add(panel_alert, "alert");
+		
+		final JPanel panel_loading = new PanelLoading();
+		panelCardlayout.add(panel_loading, "loading");
+		
+		final JPanel panel_clock = new PanelClock();
+		panelCardlayout.add(panel_clock, "clock");
+		
+		cl.show(panelCardlayout, "clock");
 	}
 
 }
