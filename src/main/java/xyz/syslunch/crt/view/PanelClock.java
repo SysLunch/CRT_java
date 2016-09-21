@@ -10,7 +10,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Date;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -20,7 +19,6 @@ public class PanelClock extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1014754252611513885L;
-	private Date data;
 	private JLabel lb_date, lb_hour;
 	private StringBuilder sb;
 	private Calendar cal;
@@ -37,7 +35,7 @@ public class PanelClock extends JPanel {
 		setLayout(gridBagLayout);
 		
 		lb_date = new JLabel("20/09/2016");
-		lb_date.setFont(new Font("Dialog", Font.BOLD, 45));
+		lb_date.setFont(new Font("Dialog", Font.BOLD, 60));
 		GridBagConstraints gbc_lb_date = new GridBagConstraints();
 		gbc_lb_date.anchor = GridBagConstraints.SOUTH;
 		gbc_lb_date.insets = new Insets(0, 0, 5, 0);
@@ -46,7 +44,7 @@ public class PanelClock extends JPanel {
 		add(lb_date, gbc_lb_date);
 		
 		lb_hour = new JLabel("00:55:23");
-		lb_hour.setFont(new Font("Dialog", Font.BOLD, 60));
+		lb_hour.setFont(new Font("Dialog", Font.BOLD, 80));
 		GridBagConstraints gbc_lb_hour = new GridBagConstraints();
 		gbc_lb_hour.anchor = GridBagConstraints.NORTH;
 		gbc_lb_hour.gridx = 0;
@@ -61,13 +59,21 @@ public class PanelClock extends JPanel {
 	
 	private void atualizar(){
 		cal = Calendar.getInstance();
-		data = new Date();
 		sb = new StringBuilder();
-		sb.append(cal.get(Calendar.DAY_OF_MONTH)).append("/").append(cal.get(Calendar.MONTH)+1).append("/").append(cal.get(Calendar.YEAR));
+		sb.append(normalizarValores(cal.get(Calendar.DAY_OF_MONTH))).append("/").append(normalizarValores(cal.get(Calendar.MONTH)+1)).append("/").append(normalizarValores(cal.get(Calendar.YEAR)));
 		lb_date.setText(sb.toString());
 		sb = new StringBuilder();
-		sb.append(cal.get(Calendar.HOUR_OF_DAY)).append(":").append(cal.get(Calendar.MINUTE)).append(":").append(cal.get(Calendar.SECOND));
+		sb.append(normalizarValores(cal.get(Calendar.HOUR_OF_DAY))).append(":").append(normalizarValores(cal.get(Calendar.MINUTE))).append(":").append(normalizarValores(cal.get(Calendar.SECOND)));
 		lb_hour.setText(sb.toString());
+	}
+	
+	private String normalizarValores(int i){
+		StringBuilder sb = new StringBuilder();
+		if(i < 10){
+			sb.append("0");
+		}
+		sb.append(i);
+		return sb.toString();
 	}
 	
     ActionListener ativar = (

@@ -10,7 +10,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import java.awt.Color;
 
-public class PanelLoading extends JPanel {
+public class PanelSuccessCRT extends JPanel {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class PanelLoading extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelLoading() {
+	public PanelSuccessCRT() {
 		setBackground(new Color(0,119,189));
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -31,22 +31,21 @@ public class PanelLoading extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		final ImageIcon loop = new ImageIcon(getClass().getResource("icons/loop.png"), "loop");
-		JLabel lb_icone = new JLabel(loop);
+		JLabel lb_icone = new JLabel(new ImageIcon(getClass().getResource("icons/checkbox.png"), "checkbox"));
 		GridBagConstraints gbc_lb_icone = new GridBagConstraints();
 		gbc_lb_icone.insets = new Insets(0, 0, 5, 0);
 		gbc_lb_icone.gridx = 0;
 		gbc_lb_icone.gridy = 0;
 		add(lb_icone, gbc_lb_icone);
 		
-		JLabel lb_titulo = new JLabel("CARREGANDO...");
+		JLabel lb_titulo = new JLabel("CRT SETADO COM SUCESSO!");
 		lb_titulo.setForeground(Color.WHITE);
-		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 30));
+		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 55));
 		GridBagConstraints gbc_lb_titulo = new GridBagConstraints();
 		gbc_lb_titulo.insets = new Insets(0, 0, 5, 0);
 		gbc_lb_titulo.gridx = 0;
 		gbc_lb_titulo.gridy = 1;
-		add(lb_titulo, gbc_lb_titulo);    
+		add(lb_titulo, gbc_lb_titulo);
 
 	}
 	

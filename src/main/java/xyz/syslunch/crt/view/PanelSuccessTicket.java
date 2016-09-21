@@ -41,7 +41,7 @@ public class PanelSuccessTicket extends JPanel {
 		
 		JLabel lb_titulo = new JLabel("BOM ALMOÇO!");
 		lb_titulo.setForeground(Color.WHITE);
-		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 45));
+		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 70));
 		GridBagConstraints gbc_lb_titulo = new GridBagConstraints();
 		gbc_lb_titulo.insets = new Insets(0, 0, 5, 0);
 		gbc_lb_titulo.gridx = 0;
@@ -56,6 +56,7 @@ public class PanelSuccessTicket extends JPanel {
 		add(separator, gbc_separator);
 		
 		lb_tipoAlmoco = new JLabel("[TIPO TICKETS]");
+		lb_tipoAlmoco.setFont(new Font("Dialog", Font.BOLD, 25));
 		lb_tipoAlmoco.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lb_tipoAlmoco = new GridBagConstraints();
 		gbc_lb_tipoAlmoco.gridx = 0;

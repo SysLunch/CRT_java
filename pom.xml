@@ -6,14 +6,14 @@
   <name>SysLunch CRT</name>
   <dependencies>
 	<dependency>
-	    <groupId>org.webjars</groupId>
-	    <artifactId>foundation-icon-fonts</artifactId>
-	    <version>d596a3cfb3</version>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20160810</version>
 	</dependency>
 	<dependency>
-		<groupId>org.apache.xmlgraphics</groupId>
-		<artifactId>batik-svg-dom</artifactId>
-		<version>1.8</version>
-	</dependency>
+	   <groupId>javazoom</groupId>
+	   <artifactId>jlayer</artifactId>
+	   <version>1.0.1</version>
+	</dependency> 
   </dependencies>
 </project>

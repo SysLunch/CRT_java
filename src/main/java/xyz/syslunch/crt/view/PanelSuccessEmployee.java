@@ -35,10 +35,10 @@ public class PanelSuccessEmployee extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		lb_imagem = new JLabel("");
+		lb_imagem = new JLabel("[FOTO FUNCIONÁRIO]");
 		GridBagConstraints gbc_lb_imagem = new GridBagConstraints();
 		gbc_lb_imagem.anchor = GridBagConstraints.EAST;
-		gbc_lb_imagem.insets = new Insets(0, 0, 5, 5);
+		gbc_lb_imagem.insets = new Insets(10, 0, 5, 5);
 		gbc_lb_imagem.gridx = 0;
 		gbc_lb_imagem.gridy = 0;
 		add(lb_imagem, gbc_lb_imagem);
@@ -54,7 +54,7 @@ public class PanelSuccessEmployee extends JPanel {
 		
 		JLabel lb_titulo = new JLabel("BOM ALMOÇO!");
 		lb_titulo.setForeground(Color.WHITE);
-		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 45));
+		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 70));
 		GridBagConstraints gbc_lb_titulo = new GridBagConstraints();
 		gbc_lb_titulo.gridwidth = 2;
 		gbc_lb_titulo.insets = new Insets(0, 0, 5, 0);
@@ -63,7 +63,7 @@ public class PanelSuccessEmployee extends JPanel {
 		add(lb_titulo, gbc_lb_titulo);
 		
 		lb_nomeFuncionario = new JLabel("[NOME FUNCIONÁRIO]");
-		lb_nomeFuncionario.setFont(new Font("Dialog", Font.BOLD, 25));
+		lb_nomeFuncionario.setFont(new Font("Dialog", Font.PLAIN, 35));
 		lb_nomeFuncionario.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lb_nomeFuncionario = new GridBagConstraints();
 		gbc_lb_nomeFuncionario.gridwidth = 2;
@@ -73,7 +73,7 @@ public class PanelSuccessEmployee extends JPanel {
 		add(lb_nomeFuncionario, gbc_lb_nomeFuncionario);
 		
 		lb_tipoAlmoco = new JLabel("[TIPO ALMOÇO]");
-		lb_tipoAlmoco.setFont(new Font("Dialog", Font.PLAIN, 19));
+		lb_tipoAlmoco.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lb_tipoAlmoco.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lb_tipoAlmoco = new GridBagConstraints();
 		gbc_lb_tipoAlmoco.gridwidth = 2;
@@ -83,7 +83,7 @@ public class PanelSuccessEmployee extends JPanel {
 		add(lb_tipoAlmoco, gbc_lb_tipoAlmoco);
 		
 		lb_saldoFuncionrio = new JLabel("[SALDO FUNCIONÁRIO]");
-		lb_saldoFuncionrio.setFont(new Font("Dialog", Font.PLAIN, 15));
+		lb_saldoFuncionrio.setFont(new Font("Dialog", Font.BOLD, 30));
 		lb_saldoFuncionrio.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lb_saldoFuncionrio = new GridBagConstraints();
 		gbc_lb_saldoFuncionrio.gridwidth = 2;
@@ -102,13 +102,18 @@ public class PanelSuccessEmployee extends JPanel {
 	}
 	
 	public void setSaldoFuncionario(int saldo){
-		lb_saldoFuncionrio.setText("SALDO: "+saldo);
+		lb_saldoFuncionrio.setText("SALDO RESTANTE: "+saldo);
+	}
+	
+	public void clearSaldoFuncionario(){
+		lb_saldoFuncionrio.setText("");
 	}
 	
 	public void setImage(URL url){
 		foto = new ImageIcon(url);
         while(foto.getImageLoadStatus() == MediaTracker.LOADING);
         lb_imagem.setIcon(foto);
+        lb_imagem.setText("");
 	}
 
 }

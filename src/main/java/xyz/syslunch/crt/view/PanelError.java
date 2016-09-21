@@ -40,7 +40,7 @@ public class PanelError extends JPanel {
 		
 		JLabel lb_titulo = new JLabel("ERRO");
 		lb_titulo.setForeground(Color.WHITE);
-		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 30));
+		lb_titulo.setFont(new Font("Dialog", Font.BOLD, 55));
 		GridBagConstraints gbc_lb_titulo = new GridBagConstraints();
 		gbc_lb_titulo.insets = new Insets(0, 0, 5, 0);
 		gbc_lb_titulo.gridx = 0;
@@ -48,12 +48,17 @@ public class PanelError extends JPanel {
 		add(lb_titulo, gbc_lb_titulo);
 		
 		lb_descricaoErro = new JLabel("[ERRO]");
+		lb_descricaoErro.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lb_descricaoErro.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lb_descricaoErro = new GridBagConstraints();
 		gbc_lb_descricaoErro.gridx = 0;
 		gbc_lb_descricaoErro.gridy = 2;
 		add(lb_descricaoErro, gbc_lb_descricaoErro);
 
+	}
+	
+	public void setError(String error){
+		lb_descricaoErro.setText(error);
 	}
 
 }
