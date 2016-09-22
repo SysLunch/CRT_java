@@ -2,7 +2,7 @@ package xyz.syslunch.crt.view;
 
 import javax.swing.JPanel;
 
-import xyz.syslunch.crt.GetMP3;
+import xyz.syslunch.crt.view.mp3.GetMP3;
 
 import java.awt.GridBagLayout;
 

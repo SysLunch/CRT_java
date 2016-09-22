@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>xyz.syslunch</groupId>
   <artifactId>crt</artifactId>
-  <version>0.0.2 BETA</version>
+  <version>0.0.3 BETA</version>
   <name>SysLunch CRT</name>
   <dependencies>
 	<dependency>

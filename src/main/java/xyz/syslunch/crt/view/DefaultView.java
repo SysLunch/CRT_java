@@ -11,9 +11,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import xyz.syslunch.crt.GetJSON;
-import xyz.syslunch.crt.GetMP3;
 import xyz.syslunch.crt.ShowClockCatraca;
 import xyz.syslunch.crt.SoftwareProperties;
+import xyz.syslunch.crt.view.mp3.GetMP3;
 
 import java.awt.CardLayout;
 import java.awt.GridBagLayout;
@@ -48,9 +48,9 @@ public class DefaultView extends JFrame {
 	private long time = 0l, timeTest = 0l;
 
 	GetMP3 audioErro = new GetMP3("erro.mp3", true);
-	GetMP3 audioAviso = new GetMP3("aviso.mp3");
-	GetMP3 audioBomAlmoco = new GetMP3("bomalmoco.mp3");
-	GetMP3 audioFelizAniversario = new GetMP3("felizaniversario.mp3");
+	GetMP3 audioAviso = new GetMP3("aviso.mp3", true);
+	GetMP3 audioBomAlmoco = new GetMP3("bomalmoco.mp3", true);
+	GetMP3 audioFelizAniversario = new GetMP3("felizaniversario.mp3", true);
 	
 	Thread aErro, aAviso, aBomAlmoco, aFelizAniversario, catraca, lCatraca;
 	ShowClockCatraca scl;
@@ -242,7 +242,10 @@ public class DefaultView extends JFrame {
 	}
 	
 	private void getResponse(String code){
+		tf_codigo.setText("");
+		
 		cl.show(panelCardlayout, "loading");
+		
 		if(code.equals("CRT_PRODUCTION")){
 			sp.changeURL("http://www.syslunch.xyz/");
 			cl.show(panelCardlayout, "clock");
@@ -277,7 +280,7 @@ public class DefaultView extends JFrame {
 				}
 			}else{
 				if(jo.getInt("sucesso") == 1){
-					if(jo.getInt("tipoGrupo") == 1){
+					if(jo.getInt("isTicket") == 0){
 						// Employees
 						if(jo.getInt("aniversario") == 1){
 							// BOM ALMOÇO FUNCIONÁRIO E FELIZ ANIVERSÁRIO!
@@ -376,7 +379,6 @@ public class DefaultView extends JFrame {
 					setLimitDisplayTime(20l);
 				}
 			}
-			tf_codigo.setText("");
 		}
 	}
 
