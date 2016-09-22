@@ -46,6 +46,7 @@ public class SoftwareProperties {
 	}
 	
 	public String getPropertie(String what){
+		readFile();
 		return p.getProperty(what);
 	}
 	

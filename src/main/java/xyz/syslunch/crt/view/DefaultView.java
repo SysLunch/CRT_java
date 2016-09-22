@@ -47,7 +47,7 @@ public class DefaultView extends JFrame {
 	private JLabel lb_unidade;
 	private long time = 0l, timeTest = 0l;
 
-	GetMP3 audioErro = new GetMP3("erro.mp3");
+	GetMP3 audioErro = new GetMP3("erro.mp3", true);
 	GetMP3 audioAviso = new GetMP3("aviso.mp3");
 	GetMP3 audioBomAlmoco = new GetMP3("bomalmoco.mp3");
 	GetMP3 audioFelizAniversario = new GetMP3("felizaniversario.mp3");

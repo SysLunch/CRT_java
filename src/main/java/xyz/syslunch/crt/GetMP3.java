@@ -1,6 +1,8 @@
 package xyz.syslunch.crt;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javazoom.jl.decoder.JavaLayerException;
@@ -24,6 +26,18 @@ public class GetMP3 implements Runnable{
 		}
 	}
 	
+	public GetMP3(String audioFile, Boolean t){
+		InputStream is = null;
+		BufferedInputStream bis = null;
+		try {
+			is = getClass().getResourceAsStream(audioFile);
+		    bis = new BufferedInputStream(is);
+		    play = new Player(bis);
+		} catch (JavaLayerException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void play(){
 		try {
 			play.play();
@@ -31,7 +45,6 @@ public class GetMP3 implements Runnable{
 		} catch (JavaLayerException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
