@@ -35,7 +35,7 @@ public class PanelClock extends JPanel {
 		setLayout(gridBagLayout);
 		
 		lb_date = new JLabel("20/09/2016");
-		lb_date.setFont(new Font("Dialog", Font.BOLD, 60));
+		lb_date.setFont(new Font("Dialog", Font.BOLD, 100));
 		GridBagConstraints gbc_lb_date = new GridBagConstraints();
 		gbc_lb_date.anchor = GridBagConstraints.SOUTH;
 		gbc_lb_date.insets = new Insets(0, 0, 5, 0);
@@ -44,7 +44,7 @@ public class PanelClock extends JPanel {
 		add(lb_date, gbc_lb_date);
 		
 		lb_hour = new JLabel("00:55:23");
-		lb_hour.setFont(new Font("Dialog", Font.BOLD, 80));
+		lb_hour.setFont(new Font("Dialog", Font.BOLD, 120));
 		GridBagConstraints gbc_lb_hour = new GridBagConstraints();
 		gbc_lb_hour.anchor = GridBagConstraints.NORTH;
 		gbc_lb_hour.gridx = 0;

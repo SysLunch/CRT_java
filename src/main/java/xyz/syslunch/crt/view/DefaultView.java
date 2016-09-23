@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -64,6 +65,7 @@ public class DefaultView extends JFrame {
 	final PanelLoading panel_loading = new PanelLoading();
 	final PanelClock panel_clock = new PanelClock();
 	final PanelSuccessCRT panel_successCRT = new PanelSuccessCRT();
+	final PanelShowProperties panel_showProperties = new PanelShowProperties();
 	
 	java.util.Timer Timer = new java.util.Timer();
 
@@ -131,6 +133,7 @@ public class DefaultView extends JFrame {
 		lb_unidade = new JLabel("-");
 		lb_unidade.setFont(new Font("Dialog", Font.PLAIN, 25));
 		lb_unidade.setForeground(Color.WHITE);
+		lb_unidade.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_lb_unidade = new GridBagConstraints();
 		gbc_lb_unidade.anchor = GridBagConstraints.EAST;
 		gbc_lb_unidade.insets = new Insets(0, 0, 5, 0);
@@ -199,8 +202,12 @@ public class DefaultView extends JFrame {
 		
 		panelCardlayout.add(panel_successCRT, "successCRT");
 		
+		panelCardlayout.add(panel_showProperties, "showProperties");
+		
 		Timer timer = new Timer(1000, ver);
+		Timer ping = new Timer(60000, this.ping);
 		timer.start();
+		ping.start();
 		
 		cl.show(panelCardlayout, "clock");
 	}
@@ -212,6 +219,23 @@ public class DefaultView extends JFrame {
     		}
         }
     );
+	
+	ActionListener ping = (
+		new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				try {
+					URL ping = new URL(sp.getPropertie("URL")+"CRT/ajax/ping.php?idCRT="+sp.getPropertie("CRT"));
+					JSONObject json = new JSONObject(ping.openStream());
+				} catch (MalformedURLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
+	);
 	
 	ActionListener catracaTravada = (
     	new ActionListener(){
@@ -266,6 +290,11 @@ public class DefaultView extends JFrame {
 			cl.show(panelCardlayout, "clock");
 			 lb_situacao.setText("CATRAVA DESATIVADA");
 			tf_codigo.setText("");
+		}else if(code.equals("SHOW_INFOS")){
+			panel_showProperties.updateInfos();
+			cl.show(panelCardlayout, "showProperties");
+			tf_codigo.setText("");
+			setLimitDisplayTime(20l);
 		}else{
 			getJSON.clear();
 			getJSON.setBarcode(code);

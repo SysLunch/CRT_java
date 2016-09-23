@@ -58,7 +58,7 @@ public class SoftwareProperties {
 		}
 	}
 	
-	private void readFile(){
+	public void readFile(){
 		try {
 			p.load(new FileReader(new File(name)));
 		} catch (FileNotFoundException e) {
