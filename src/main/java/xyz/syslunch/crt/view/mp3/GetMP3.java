@@ -49,6 +49,7 @@ public class GetMP3 implements Runnable{
 	public void play(){
 		try {
 			play.play();
+			while(!play.isComplete());
 			if(isURL){
 				play = new Player(Url.openStream());
 			}else{

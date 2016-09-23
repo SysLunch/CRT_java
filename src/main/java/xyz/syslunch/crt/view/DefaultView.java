@@ -369,7 +369,7 @@ public class DefaultView extends JFrame {
 						
 					}else{
 						// BOM ALMOÇO TICKET
-						panel_successTicket.setTipoTicket(jo.getString("tipo"));
+						panel_successTicket.setTipoTicket(jo.getInt("tipo"));
 						cl.show(panelCardlayout, "successTicket");
 						aBomAlmoco = new Thread(audioBomAlmoco);
 						aBomAlmoco.start();
