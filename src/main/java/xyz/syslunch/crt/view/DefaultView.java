@@ -275,6 +275,11 @@ public class DefaultView extends JFrame {
 			cl.show(panelCardlayout, "clock");
 			 lb_situacao.setText("PRODUÇÃO");
 			tf_codigo.setText("");
+		}if(code.equals("CRT_LOCALHOST")){
+			sp.changeURL("http://localhost/");
+			cl.show(panelCardlayout, "clock");
+			 lb_situacao.setText("PRODUÇÃO");
+			tf_codigo.setText("");
 		}else if(code.equals("CRT_TEST")){
 			sp.changeURL("http://10.1.2.30/almoco/");
 			cl.show(panelCardlayout, "clock");

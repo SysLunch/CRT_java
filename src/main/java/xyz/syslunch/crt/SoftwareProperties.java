@@ -22,7 +22,7 @@ public class SoftwareProperties {
 	
 	public void recordDefault(){
 		p.setProperty("CRT", "");
-		p.setProperty("URL", "http://www.syslunch.xyz/");
+		p.setProperty("URL", "http://localhost/");
 		p.setProperty("URLConsulta", "CRT/ajax/consulta.php");
 		p.setProperty("URLCatraca", "http://10.192.0.7/liberaCatraca.php");
 		p.setProperty("hasCatraca", "true");
